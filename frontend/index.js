@@ -43,21 +43,30 @@ async function getItems() {
 
 
 function updateList() {
+  var input = document.getElementById("myInput");
   if (listItems.length !== 0) {
+    input.style.borderBottomRightRadius = "0";
+    input.style.borderBottomLeftRadius = "0";
+    input.style.border = "0";
     var ul = document.getElementById("myUL");
     ul.innerHTML = '';
-    for (i = 0; i < listItems.length; i++) {
+    var itemsLength = listItems.length <= 10 ? listItems.length : 10;
+    for (i = 0; i < itemsLength; i++) {
       li = document.createElement('li');
       var img = document.createElement('img');
       img.src = listItems[i]['images'][0];
       img.style.height = '20px';
-      li.appendChild(img)
+      li.appendChild(img);
       li.appendChild(document.createTextNode(listItems[i]['name']));
+      li.style.backgroundColor = "#ffffff";
+      li.style.width = "50%";
       ul.appendChild(li);
     }
   }
   else {
     var ul = document.getElementById("myUL");
     ul.innerHTML = '';
+    input.style.borderBottomRightRadius = "10px";
+    input.style.borderBottomLeftRadius = "10px";
   }
 }}
